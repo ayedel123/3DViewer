@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>807</width>
+    <height>1309</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">MainWindow
+{
+	background-color:rgb(32,34,37);
+}
+
+QPushButton {
+    background-color: rgb(22, 25, 31);
+    text-align: left;
+	color: rgb(128, 128, 128);
+}
+
+QSlider::groove:vertical {
+	background-color: rgb(128,128,128);
+	width: 4px;
+	border: 1px solid rgb(115,115,115);
+    border-radius: 3px;
+	margin-right: 5px;
+
+}
+QSlider::handle:vertical {
+    background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgb(198,198,198), stop:1 rgb(157,157,157));
+    border: 1px solid rgba(157,157,157,0.3);
+    width: 24px;  
+    height:  12px; 
+    margin: 0px -5;  
+    border-radius: 7; 
+}
+
+QSlider::groove:horizontal {
+	background-color: rgb(128,128,128);
+	height: 4px;
+	width: 120px;
+	border: 1px solid rgb(115,115,115);
+    border-radius: 3px;
+	margin-right: 5px;
+
+}
+QSlider::handle:horizontal {
+	background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgb(198,198,198), stop:1 rgb(157,157,157));
+    border: 1px solid rgba(157,157,157,0.3);
+    width: 12px; 
+    height: 24px;  
+    margin: -5px 0;  
+    border-radius: 7; 
+}
+
+QLineEdit {
+    background-color: rgb(198,198,198);
+    border: 1px solid #ccc; 
+    border-radius: 7px; 
+    padding: 3px; 
+    color: rgb(88,88,88); 
+	margin-right: 5px;
+}
+
+
+
+
+QComboBox {
+    background-color: rgb(198,198,198); 
+    border: 1px solid #ccc; 
+    border-radius: 7px; 
+    padding: 3px; 
+    color: rgb(88,88,88); 
+    padding-right: 45px;  
+    margin-right: 5px;  
+
+
+}
+
+QComboBox::drop-down {
+    border: none;  
+    background-color: transparent;  
+}
+
+QMessageBox {
+
+    background-color: rgb(198,198,198);
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+    <property name="spacing">
+     <number>-1</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QGridLayout" name="displayLayout">
+      <item row="0" column="0">
+       <widget class="GLWindow" name="openGLWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="prefLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <item row="7" column="0">
+       <layout class="QVBoxLayout" name="extraSetLayout">
+        <item>
+         <widget class="QPushButton" name="extraSetButton">
+          <property name="text">
+           <string>Доп настройки</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="extraSetLayout_2">
+          <item>
+           <layout class="QVBoxLayout" name="projectionSetLayout">
+            <item>
+             <widget class="QPushButton" name="projectionSetButton">
+              <property name="text">
+               <string>Проекция</string>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="projectionSetLayout_2">
+              <item>
+               <widget class="QComboBox" name="projectionType">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="placeholderText">
+                 <string>Тип проекции</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Параллельная</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Центральная</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ribsSetLayout">
+            <item>
+             <widget class="QPushButton" name="ribsSetButton">
+              <property name="text">
+               <string>Ребра</string>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="ribsSetlLayout_2">
+              <item>
+               <widget class="QComboBox" name="ribsType">
+                <property name="currentText">
+                 <string/>
+                </property>
+                <property name="placeholderText">
+                 <string>Тип ребра</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Сплошная</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Пунктирная</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="ribsColorButton">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: rgb(51, 51, 51);
+    color: rgb(151,151,151);
+    border: 1px solid rgba(71, 71, 71, 0.3); 
+    border-radius: 7px; 
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 7px;
+    margin-top: 2px;
+}
+
+QPushButton:hover {
+    background-color: rgb(65,65, 65); 
+}
+
+QPushButton:pressed {
+    background-color: rgb(92,92,92);
+}</string>
+                </property>
+                <property name="text">
+                 <string>Выбрать цвет</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="ribsSize">
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                 <string>Толщина ребра</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="vertexSetLayout">
+            <item>
+             <widget class="QPushButton" name="vertexSetButton">
+              <property name="text">
+               <string>Вершины</string>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="vertexSetLayout_2">
+              <item>
+               <widget class="QComboBox" name="vertexType">
+                <property name="currentIndex">
+                 <number>-1</number>
+                </property>
+                <property name="placeholderText">
+                 <string>Тип вершины</string>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Круг</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Квадрат</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Отсутствует</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="vertexColorButton">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: rgb(51, 51, 51);
+    color: rgb(151,151,151);
+    border: 1px solid rgba(71, 71, 71, 0.3); 
+    border-radius: 7px; 
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(65,65, 65); 
+}
+
+QPushButton:pressed {
+    background-color: rgb(92,92,92);
+}</string>
+                </property>
+                <property name="text">
+                 <string>Выбрать цвет</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="vertexSize">
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                 <string>Размер вершины</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="backgroundSetLayout">
+            <item>
+             <widget class="QPushButton" name="backgroundSetButton">
+              <property name="text">
+               <string>Задний фон</string>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="backgroundSetLayout_2">
+              <item>
+               <widget class="QPushButton" name="backgroundColor">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background-color: rgb(51, 51, 51);
+    color: rgb(151,151,151);
+    border: 1px solid rgba(71, 71, 71, 0.3); 
+    border-radius: 7px; 
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 7px;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(65,65, 65); 
+}
+
+QPushButton:pressed {
+    background-color: rgb(92,92,92);
+}</string>
+                </property>
+                <property name="text">
+                 <string>Выбрать цвет</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0">
+       <layout class="QVBoxLayout" name="routLayout">
+        <item>
+         <widget class="QPushButton" name="routButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Вращение</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="routLayout_2">
+          <item row="1" column="2">
+           <widget class="QSlider" name="routSliderZ">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>-180</number>
+            </property>
+            <property name="maximum">
+             <number>180</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="pageStep">
+             <number>10</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QSlider" name="routSliderX">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>-180</number>
+            </property>
+            <property name="maximum">
+             <number>180</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="pageStep">
+             <number>10</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSlider" name="routSliderY">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>-180</number>
+            </property>
+            <property name="maximum">
+             <number>180</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="pageStep">
+             <number>10</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="routLineX">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>x</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="routLineY">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLineEdit" name="routLineZ">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>z</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <layout class="QVBoxLayout" name="moveLayout">
+        <item>
+         <widget class="QPushButton" name="moveButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Перемещение</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="moveLayout_2">
+          <item row="1" column="2">
+           <widget class="QSlider" name="moveSliderZ">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>-50</number>
+            </property>
+            <property name="maximum">
+             <number>50</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLineEdit" name="moveLineZ">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="inputMask">
+             <string/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>z</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="moveLineX">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>x</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QSlider" name="moveSliderX">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>-50</number>
+            </property>
+            <property name="maximum">
+             <number>50</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="moveLineY">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>y</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSlider" name="moveSliderY">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>-50</number>
+            </property>
+            <property name="maximum">
+             <number>50</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="9" column="0">
+       <layout class="QVBoxLayout" name="renderLayout">
+        <item>
+         <widget class="QPushButton" name="renderButton">
+          <property name="text">
+           <string>Рендер</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="renderLayout_2">
+          <item>
+           <widget class="QPushButton" name="renderJPEG">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: rgb(51, 51, 51);
+    color: rgb(151,151,151);
+    border: 1px solid rgba(71, 71, 71, 0.3); 
+    border-radius: 7px; 
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 7px;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(65,65, 65); 
+}
+
+QPushButton:pressed {
+    background-color: rgb(92,92,92);
+}</string>
+            </property>
+            <property name="text">
+             <string>Рендер в JPEG</string>
+            </property>
+           </widget>
+          </item>
+             <item>
+                 <widget class="QPushButton" name="renderBMP">
+                     <property name="styleSheet">
+                         <string notr="true">QPushButton {
+                             background-color: rgb(51, 51, 51);
+                             color: rgb(151,151,151);
+                             border: 1px solid rgba(71, 71, 71, 0.3);
+                             border-radius: 7px;
+                             padding: 5px 10px;
+                             margin-right: 5px;
+                             margin-bottom: 7px;
+
+                             }
+
+                             QPushButton:hover {
+                             background-color: rgb(65,65, 65);
+                             }
+
+                             QPushButton:pressed {
+                             background-color: rgb(92,92,92);
+                             }</string>
+                     </property>
+                     <property name="text">
+                         <string>Рендер в BMP</string>
+                     </property>
+                 </widget>
+             </item>
+          <item>
+           <widget class="QPushButton" name="renderGIF">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: rgb(51, 51, 51);
+    color: rgb(151,151,151);
+    border: 1px solid rgba(71, 71, 71, 0.3); 
+    border-radius: 7px; 
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 7px;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(65,65, 65); 
+}
+
+QPushButton:pressed {
+    background-color: rgb(92,92,92);
+}</string>
+            </property>
+            <property name="text">
+             <string>Рендер в GIF</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="10" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>400</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="0">
+       <layout class="QVBoxLayout" name="scaleLayout">
+        <item>
+         <widget class="QPushButton" name="scaleButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Масштабирование</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="scaleLayout_2">
+          <item>
+           <widget class="QLineEdit" name="scaleLine">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>на сколько</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="sacleSlider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QVBoxLayout" name="selectLayout">
+        <item>
+         <widget class="QLabel" name="filePath">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+     color: rgb(120, 120, 120); 
+	 padding-top: 15px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Путь к файлу</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="selectFileButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	padding-top: 8px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Выбрать файл</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="8" column="0">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>5</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>807</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GLWindow</class>
+   <extends>QOpenGLWidget</extends>
+   <header>glWindow/gl_window.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
